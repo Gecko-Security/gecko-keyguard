@@ -1,0 +1,17 @@
+{
+    "signers": [
+        {
+            "account": "rUjmvn38jfRoLsZxwCSgdSj36CPe395P4B",
+            "weight": 1
+        },
+        {
+            "account": "rLZrPiXFetbvyYT7p12QGSAyWh1XN8xwsD",
+            "weight": 1
+        },
+        {
+            "account": "rawyaVjdnemoyPVcx9cBVQG9t49A7mnQ9v",
+            "weight": 1
+        }
+    ],
+    "signerQuorum": "min weight as int"
+}
