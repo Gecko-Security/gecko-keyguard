@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@crossmarkio/sdk": "^0.3.9",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "xrpl": "^3.1.0"
