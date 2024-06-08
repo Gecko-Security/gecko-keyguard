@@ -25,7 +25,7 @@ import {
   
   const menuItems = [
     {
-      title: "Consensus 2024",
+      title: "Home",
       list: [
         {
           title: "Dashboard",
@@ -33,7 +33,7 @@ import {
           icon: <MdDashboard />,
         },
         {
-          title: "Scan",
+          title: "Transactions",
           path: "/dashboard/scan",
           icon: <MdLocationSearching />,
         },
@@ -42,12 +42,7 @@ import {
           path: "https://github.com/Gecko-Security",
           icon: <MdOutlineSecurity />
           ,
-        },
-        {
-          title: "Documentation",
-          path: "https://github.com/Gecko-Security",
-          icon: <FaBook />,
-        },
+        }
       ],
     },
     {
@@ -66,20 +61,6 @@ import {
         {
           title: "Audits",
           path: "/dashboard/teams",
-          icon: <RiTimer2Line />,
-        },
-      ],
-    },
-    {
-      list: [
-        {
-          title: "Symbolic Execution",
-          path: "/dashboard/settings",
-          icon: <RiTimer2Line />,
-        },
-        {
-          title: "AI",
-          path: "/dashboard/help",
           icon: <RiTimer2Line />,
         },
       ],
