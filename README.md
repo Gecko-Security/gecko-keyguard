@@ -1,2 +1,2 @@
-# xrpl-dkmi
+# KeyGuard
 xrpl dkmi
