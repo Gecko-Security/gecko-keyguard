@@ -1,40 +1,62 @@
 import { useState } from 'react';
 import styles from './dkmi-card.module.css';
 import Image from "next/image";
-import * as xrpl from 'xrpl';
+import { MdIosShare } from 'react-icons/md';
 import Button from '../button/button';
 
 const DKMICard = () => {
     const [walletAddress, setWalletAddress] = useState(null);
+    const [signers, setSigners] = useState([]);
     const [publicKey, setPublicKey] = useState(null);
-    const [privateKey, setPrivateKey] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [destination, setDestination] = useState('');
     const [amount, setAmount] = useState('');
     const [destination1, setDestination1] = useState('');
     const [amount1, setAmount1] = useState('');
-    const [transactionId, setTransactionId] = useState(null);
-    const storedAddress = "raF3An625yzS3EksmJSwJmmqVG1tZpL192"; // Example stored value for paste functionality
-    const storedAmount = "500000"; // Adjusted to a higher amount for demonstration
+    const [transactionIds, setTransactionIds] = useState([]);
+    const storedAddress = "raF3An625yzS3EksmJSwJmmqVG1tZpL192";
+    const storedAmount = "500000";
     const storedAddress1 = "r4yYS7d4nC1ssvjsk3UNzyvYxVLgeWgUUq";
     const storedAmount1 = "100000";
 
     const generateAndFundWallet = async () => {
         setLoading(true);
         try {
-            const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
-            await client.connect();
+            const signersResponse = await fetch('http://localhost:3030/generate-signers');
+            if (!signersResponse.ok) {
+                throw new Error(`Error generating signers: ${signersResponse.statusText}`);
+            }
+            const signersData = await signersResponse.json();
 
-            const { wallet } = await client.fundWallet();
-            setWalletAddress(wallet.address);
-            setPublicKey(wallet.classicAddress);
-            setPrivateKey(wallet.privateKey);
+            const signers = [
+                { account: signersData.address1, seed: signersData.seed1, weight: 1 },
+                { account: signersData.address2, seed: signersData.seed2, weight: 1 },
+                { account: signersData.address3, seed: signersData.seed3, weight: 1 },
+            ];
 
-            await client.disconnect();
+            const multiSigResponse = await fetch('http://localhost:3030/create-multisig-wallet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    signers: signers.map(({ account, weight }) => ({ account, weight })),
+                    signerQuorum: 2,
+                }),
+            });
+            if (!multiSigResponse.ok) {
+                throw new Error(`Error creating multi-signature wallet: ${multiSigResponse.statusText}`);
+            }
+            const multiSigData = await multiSigResponse.json();
+
+            setWalletAddress(multiSigData.mainWalletAddress);
+            setSigners(signers);
+            setPublicKey(multiSigData.mainWalletAddress);
             setLoading(false);
         } catch (error) {
-            setError('Failed to generate and fund wallet');
+            console.error(error);
+            setError(error.message);
             setLoading(false);
         }
     };
@@ -47,46 +69,65 @@ const DKMICard = () => {
         }
 
         try {
-            const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
-            await client.connect();
-
             const transaction1 = {
                 TransactionType: 'Payment',
                 Account: walletAddress,
                 Destination: destination,
-                Amount: xrpl.xrpToDrops(amount), // Convert XRP to drops
+                Amount: amount,
+                Fee: "15000",
+                SigningPubKey: ""
             };
 
             const transaction2 = {
                 TransactionType: 'Payment',
                 Account: walletAddress,
                 Destination: destination1,
-                Amount: xrpl.xrpToDrops(amount1), // Convert XRP to drops
+                Amount: amount1,
+                Fee: "15000",
+                SigningPubKey: ""
             };
 
-            const prepared1 = await client.autofill(transaction1);
-            const signed1 = wallet.sign(prepared1);
-            const result1 = await client.submitAndWait(signed1.tx_blob);
+            const transactions = [transaction1, transaction2];
+            const transactionHashes = [];
 
-            const prepared2 = await client.autofill(transaction2);
-            const signed2 = wallet.sign(prepared2);
-            const result2 = await client.submitAndWait(signed2.tx_blob);
+            for (const transaction of transactions) {
+                const response = await fetch('http://localhost:3030/sign-multisig-transaction', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        mainAddress: walletAddress,
+                        signers,
+                        transaction
+                    }),
+                });
+                if (!response.ok) {
+                    throw new Error(`Error signing transaction: ${response.statusText}`);
+                }
+                // const result = await response.json();
+                // console.log(`Transaction result for ${transaction.Destination}:`, result);
+                // transactionHashes.push(result.result.tx_json.hash);
+            }
 
-            setTransactionId(`${result1.tx_json.hash}, ${result2.tx_json.hash}`);
-            setError(null); // Clear any previous errors
-
-            await client.disconnect();
+            // setTransactionIds(transactionHashes);
+            setError(null);
         } catch (error) {
             console.error('Error during transactions:', error);
             setError('Failed to send transactions');
         }
     };
 
+    const shortenHash = (hash) => {
+        if (!hash) return '';
+        return `${hash.slice(0, 4)}...${hash.slice(-4)}`;
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.headerContent}>
-                    <Image className={styles.img} src="/clarity.png" alt="" width={60} height={60} />
+                    <Image className={styles.img} src="/xrp.png" alt="" width={60} height={60} />
                     <span className={styles.title}>Non-Custodial Transaction</span>
                 </div>
                 {loading ? (
@@ -104,11 +145,12 @@ const DKMICard = () => {
                     <>
                         <div className={styles.formGroup}>
                             <label className={styles.label}>Public Key</label>
-                            <div className={styles.address}>{publicKey}</div>
-                        </div>
-                        <div className={styles.formGroup}>
-                            <label className={styles.label}>Private Key</label>
-                            <div className={styles.address}>{privateKey}</div>
+                            <div className={styles.addressContainer}>
+                                <div className={styles.address}>{publicKey}</div>
+                                <a href={`https://testnet.xrpl.org/accounts/${publicKey}`} target="_blank" rel="noopener noreferrer">
+                                    <MdIosShare className={styles.shareIcon} />
+                                </a>
+                            </div>
                         </div>
                         <form onSubmit={handleSend} className={styles.form}>
                             <div className={styles.row}>
@@ -171,7 +213,20 @@ const DKMICard = () => {
                             </div>
                             <Button type="submit" className={styles.button}>Send</Button>
                         </form>
-                        {transactionId && <p>Transaction ID: {transactionId}</p>}
+                        {transactionIds.length > 0 && (
+                            <div className={styles.formGroup}>
+                                <label className={styles.label}>Transaction IDs</label>
+                                <div className={styles.address}>
+                                    {transactionIds.map((id, index) => (
+                                        <div key={index}>
+                                            <a href={`https://testnet.xrpl.org/transactions/${id}`} target="_blank" rel="noopener noreferrer" className={styles.hashLink}>
+                                                {shortenHash(id)}
+                                            </a>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
@@ -180,4 +235,3 @@ const DKMICard = () => {
 };
 
 export default DKMICard;
-

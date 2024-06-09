@@ -32,7 +32,7 @@ import {
         },
         {
           title: "Transactions",
-          path: "/dashboard/scan",
+          path: "/dashboard/transactions",
           icon: <MdLocationSearching />,
         },
         {

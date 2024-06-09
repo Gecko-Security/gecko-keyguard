@@ -52,6 +52,17 @@
     color: white;
 }
 
-.tick:last-child {
+.cross {
     color: red;
+}
+
+.hashLink {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.hashLink:hover {
+    color: #007bff;
+    text-decoration: underline;
+    transition-duration: 0.3s;
 }

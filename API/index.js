@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const xrpl = require('xrpl');
+const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = 3030;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/create-multisig-wallet', async (req, res) => {
@@ -19,6 +21,7 @@ app.post('/create-multisig-wallet', async (req, res) => {
         await client.connect();
         const mainWallet = (await client.fundWallet()).wallet;
         console.log(`Main wallet address: ${mainWallet.address}`);
+
         const signerEntries = signers.map(signer => ({
             SignerEntry: {
                 Account: signer.account,
@@ -46,6 +49,7 @@ app.post('/create-multisig-wallet', async (req, res) => {
         const preparedDisableTx = await client.autofill(disableMasterKeyTx);
         const signedDisableTx = mainWallet.sign(preparedDisableTx);
         const resultDisableTx = await client.submitAndWait(signedDisableTx.tx_blob);
+
         await client.disconnect();
 
         res.status(200).send({
@@ -64,14 +68,17 @@ app.get('/generate-signers', async (req, res) => {
     await client.connect();
     
     try {
-        const signer1 = (await client.fundWallet()).wallet;
-        const signer2 = (await client.fundWallet()).wallet;
-        const signer3 = (await client.fundWallet()).wallet;
-        res.json({ 
-            address1: signer1.address, seed1: signer1.seed,
-            address2: signer2.address, seed2: signer2.seed,
-            address3: signer3.address, seed3: signer3.seed
-         });
+        const [signer1, signer2, signer3] = await Promise.all([
+            client.fundWallet(),
+            client.fundWallet(),
+            client.fundWallet()
+        ]);
+
+        res.json({
+            address1: signer1.wallet.address, seed1: signer1.wallet.seed,
+            address2: signer2.wallet.address, seed2: signer2.wallet.seed,
+            address3: signer3.wallet.address, seed3: signer3.wallet.seed
+        });
     } catch (error) {
         console.error(`Error generating wallet: ${error}`);
         res.status(500).json({ error: 'Failed to generate wallet' });
@@ -101,14 +108,14 @@ app.post('/sign-multisig-transaction', async (req, res) => {
             return signedTx.tx_blob;
         };
 
-        const txBlobs = wallets.map(wallet => signFor(wallet, preparedTx));
+        const txBlobs = await Promise.all(wallets.map(wallet => signFor(wallet, preparedTx)));
         console.log('Signed Transaction Blobs:', txBlobs);
 
         const multisignedTx = xrpl.multisign(txBlobs);
         console.log('Multisigned Transaction:', multisignedTx);
 
         const submitResponse = await client.submit(multisignedTx);
-        console.log('Submit Response:', submitResponse);
+        console.log('response:', submitResponse);
 
         if (submitResponse.result.engine_result === 'tesSUCCESS') {
             res.status(200).send({

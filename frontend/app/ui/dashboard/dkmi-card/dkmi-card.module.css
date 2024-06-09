@@ -24,6 +24,7 @@
 .img {
     width: 60px;
     height: 60px;
+    border-radius: 18px;
 }
 
 .texts {
@@ -101,3 +102,25 @@
     /* border-color: #555; Optional: change border color on focus */
 }
 
+.addressContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.shareIcon {
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.hashLink {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.hashLink:hover {
+    color: #007bff;
+    text-decoration: underline;
+    transition-duration: 0.3s;
+}

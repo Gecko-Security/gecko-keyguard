@@ -79,7 +79,7 @@ const Card = () => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.headerContent}>
-                    <Image className={styles.img} src="/clarity.png" alt="" width={60} height={60} />
+                    <Image className={styles.img} src="/xrp.png" alt="" width={60} height={60} />
                     <span className={styles.title}>Traditional Transaction</span>
                 </div>
                 {loading ? (
