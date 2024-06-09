@@ -23,6 +23,9 @@ When designing decentralized applications on the XRP Ledger, managing signer key
 - Each node verifies the collected signatures using the private keys, ensuring the signatures are valid and untampered.
 - The signatures are combined into a single multi-signature transaction. The [`combine`](https://xrpl.org/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction/#4.-combine-signatures-and-submit)function is used to create a transaction blob that includes all valid signatures
 - The combined multi-signature transaction is submitted to a ripple node for validation. The XRPL validates the transaction against the signer list and other rules before including it in the ledger.
+
+## Technical
+The main components are the decentralised key management module developed in javascript using XRPL.js along with the simulated nodes developed in Java, using XRPL4J to manage signer lists and handle transactions. The virtual nodes can propose, sign and verify transactions, effectively distributing trust and security of the network.
 ## Contributing
 
 KeyGuard is open-source and a community effort. Contributions are welcome to improve and expand the framework.
