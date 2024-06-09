@@ -18,11 +18,8 @@ const Navbar = () => {
             <div className={styles.title}>{pathname.split("/").pop()}</div>
             <div className={styles.menu}>
                 <div className={styles.search}>
-                    <MdSearch/>
-                    <input type="text" placeholder="Search..." className={styles.input} />
-                </div>
-                <div className={styles.icons}> 
-                    <MdNotifications size={20} />
+                    <MdSearch className={styles.searchIcon} />
+                    <input type="text" placeholder="Search Transactions" className={styles.input} />
                 </div>
             </div>
         </div>

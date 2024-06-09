@@ -38,8 +38,8 @@ import {
           icon: <MdLocationSearching />,
         },
         {
-          title: "Vulnerability Detectors",
-          path: "https://github.com/Gecko-Security",
+          title: "Fraud Detection",
+          path: "https://google.com",
           icon: <MdOutlineSecurity />
           ,
         }
@@ -59,7 +59,7 @@ import {
           icon: <RiTimer2Line />,
         },
         {
-          title: "Audits",
+          title: "Fraud Detection",
           path: "/dashboard/teams",
           icon: <RiTimer2Line />,
         },
@@ -71,7 +71,7 @@ const Sidebar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.user}>
-                <Image className={styles.userImage} src="/gecko.png" alt="" width="110" height="110"/>
+                <Image className={styles.userImage} src="/monke.png" alt="" width="110" height="110"/>
                 <div className={styles.userDetail}>
                     <span className={styles.username}>DKMI</span>
                     <span className={styles.usertitle}>Non-Custodial Keypairs</span>

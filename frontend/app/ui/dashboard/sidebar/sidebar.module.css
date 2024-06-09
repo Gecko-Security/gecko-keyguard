@@ -1,7 +1,7 @@
 .container{
     position: sticky;
     top: 40px;
- 
+    height: 100vh;
 }
 
 .user{
@@ -21,24 +21,24 @@
     flex-direction:column;
 }
 
-.username{
+.username {
     font-weight: 700;
-    font-size:30px;
+    font-size: 30px;
 }
 
-.usertitle{
-   font-size:12px; 
+.usertitle {
+   font-size: 14px; 
    color: var(--textSoft);
 }
 
-.list{
+.list {
     list-style: none;
 }
 
-.cat{
+.cat {
     color: var(--textSoft);
-    font-weight: bold;
-    font-size: 13px;
+    font-weight: semi-bold;
+    font-size: 18px;
     margin: 10px 0px;
 }
 

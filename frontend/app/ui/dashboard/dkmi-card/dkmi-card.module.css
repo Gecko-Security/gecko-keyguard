@@ -1,6 +1,3 @@
-/* card.module.css */
-/* define colour variables */
-
 .container {
     background-color: var(--bgSoft);
     padding: 20px;
@@ -42,6 +39,18 @@
 }
 
 .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -92,3 +101,16 @@
     /* border-color: #555; Optional: change border color on focus */
 }
 
+.button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

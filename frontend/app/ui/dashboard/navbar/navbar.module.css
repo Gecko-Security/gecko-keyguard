@@ -26,15 +26,26 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 400px;
     background-color: #313131;
     padding: 10px;
     border-radius: 10px;
+}
+
+.searchIcon {
+    font-size: 24px; /* Adjust the size as needed */
 }
 
 .input{
     background-color: transparent;
     border: none;
     color: var(--text);
+    font-size: 16px;
+}
+
+.input:focus {
+    outline: none;
+    /* border-color: #555; Optional: change border color on focus */
 }
 
 .icons{
