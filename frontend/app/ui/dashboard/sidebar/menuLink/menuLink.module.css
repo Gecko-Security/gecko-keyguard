@@ -1,0 +1,24 @@
+.container{
+    padding:20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0px;
+    border-radius: 10px;
+}
+
+.container:hover{
+    background-color: #171720;
+    transition: 0.35s;
+}
+
+.container:active {
+    background-color: #0e0e14;
+    transition: 0.35s;
+}
+
+.icon {
+    font-size: 20px; /* Adjust the size as needed */
+    display: flex;
+    align-items: center;
+}

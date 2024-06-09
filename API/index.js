@@ -1,81 +1,12 @@
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const xrpl = require('xrpl');
-
-// const app = express();
-// const port = 3000;
-
-// // Middleware to parse JSON bodies
-// app.use(bodyParser.json());
-
-
-// // POST request to add an item
-// app.get('/createWallet', async (req, res) => {
-//     try {
-//         const api = new xrpl.Client("wss://s.altnet.rippletest.net:51233");
-//         await api.connect();
-//         const { wallet, balance } = await api.fundWallet();
-
-// // Disable the master key
-//         const prepared = await api.autofill({
-//             TransactionType: "AccountSet",
-//             Account: wallet.address,
-//             SetFlag: xrpl.AccountSetAsfFlags.asfDisableMaster
-//         });
-
-//         const signed = wallet.sign(prepared);
-//         const result = await api.submitAndWait(signed.tx_blob);
-
-//         await api.disconnect();
-
-//         if (result.result.meta.TransactionResult === 'tesSUCCESS') {
-//             res.status(201).json({ message: 'Wallet Created and Master Key Disabled', wallet, balance });
-//         } else {
-//             res.status(500).json({ error: 'Failed to disable master key', result });
-//         }
-//     } catch (error) {
-//         console.error('Error generating wallet:', error);
-//         res.status(500).json({ error: 'Error generating wallet' });
-//     }
-// });
-
-// app.post('/shareWallet', (req, res) => {
-    
-//     //shareWalletFunction
-//     info = []
-    
-//     res.status(201).json({ message: 'Wallet Shared', info });
-// });
-
-
-// // GET request to retrieve all items
-// app.get('/deleteWallet', (req, res) => {
-//     //deleteWalletFunction
-//     res.json({message: "Wallet Deleted"});
-// });
-
-// app.get('/items', (req, res) => {
-//     res.json(items);
-// });
-
-
-
-
-// // Start the server
-// app.listen(port, () => {
-//     console.log(`Server is running on http://localhost:${port}`);
-// });
-
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const xrpl = require('xrpl');
+const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = 3030;
 
-// Middleware to parse JSON bodies
+app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/create-multisig-wallet', async (req, res) => {
@@ -86,15 +17,11 @@ app.post('/create-multisig-wallet', async (req, res) => {
     }
 
     try {
-        // Connect to the XRPL testnet
         const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
         await client.connect();
-
-        // Create a main wallet (to be the multisig wallet)
         const mainWallet = (await client.fundWallet()).wallet;
         console.log(`Main wallet address: ${mainWallet.address}`);
 
-        // Prepare the signers list
         const signerEntries = signers.map(signer => ({
             SignerEntry: {
                 Account: signer.account,
@@ -102,7 +29,6 @@ app.post('/create-multisig-wallet', async (req, res) => {
             }
         }));
 
-        // Configure the multisig settings on the main wallet
         const multisigTx = {
             TransactionType: 'SignerListSet',
             Account: mainWallet.classicAddress,
@@ -110,17 +36,26 @@ app.post('/create-multisig-wallet', async (req, res) => {
             SignerEntries: signerEntries
         };
 
-        // Submit the multisig settings transaction
-        const prepared = await client.autofill(multisigTx);
-        const signed = mainWallet.sign(prepared);
-        const result = await client.submitAndWait(signed.tx_blob);
+        const preparedMultisigTx = await client.autofill(multisigTx);
+        const signedMultisigTx = mainWallet.sign(preparedMultisigTx);
+        const resultMultisigTx = await client.submitAndWait(signedMultisigTx.tx_blob);
 
-        // Disconnect from the client
+        const disableMasterKeyTx = {
+            TransactionType: 'AccountSet',
+            Account: mainWallet.classicAddress,
+            SetFlag: xrpl.AccountSetAsfFlags.asfDisableMaster
+        };
+
+        const preparedDisableTx = await client.autofill(disableMasterKeyTx);
+        const signedDisableTx = mainWallet.sign(preparedDisableTx);
+        const resultDisableTx = await client.submitAndWait(signedDisableTx.tx_blob);
+
         await client.disconnect();
 
         res.status(200).send({
             mainWalletAddress: mainWallet.classicAddress,
-            transactionResult: result.result.meta.TransactionResult
+            multisigTransactionResult: resultMultisigTx.result.meta.TransactionResult,
+            disableMasterKeyTransactionResult: resultDisableTx.result.meta.TransactionResult
         });
     } catch (error) {
         console.error(error);
@@ -128,9 +63,79 @@ app.post('/create-multisig-wallet', async (req, res) => {
     }
 });
 
-// Other routes...
+app.get('/generate-signers', async (req, res) => {
+    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+    await client.connect();
+    
+    try {
+        const [signer1, signer2, signer3] = await Promise.all([
+            client.fundWallet(),
+            client.fundWallet(),
+            client.fundWallet()
+        ]);
 
-// Start the server
+        res.json({
+            address1: signer1.wallet.address, seed1: signer1.wallet.seed,
+            address2: signer2.wallet.address, seed2: signer2.wallet.seed,
+            address3: signer3.wallet.address, seed3: signer3.wallet.seed
+        });
+    } catch (error) {
+        console.error(`Error generating wallet: ${error}`);
+        res.status(500).json({ error: 'Failed to generate wallet' });
+    } finally {
+        client.disconnect();
+    }
+});
+
+app.post('/sign-multisig-transaction', async (req, res) => {
+    const { mainAddress, signers, transaction } = req.body;
+
+    if (!mainAddress || !Array.isArray(signers) || signers.length !== 3 || !transaction) {
+        return res.status(400).send('Invalid request payload');
+    }
+
+    try {
+        const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+        await client.connect();
+
+        const wallets = signers.map(signer => xrpl.Wallet.fromSeed(signer.seed));
+
+        const preparedTx = await client.autofill(transaction);
+        console.log('Prepared Transaction:', preparedTx);
+
+        const signFor = (signer, preparedTx) => {
+            const signedTx = signer.sign(preparedTx, true);
+            return signedTx.tx_blob;
+        };
+
+        const txBlobs = await Promise.all(wallets.map(wallet => signFor(wallet, preparedTx)));
+        console.log('Signed Transaction Blobs:', txBlobs);
+
+        const multisignedTx = xrpl.multisign(txBlobs);
+        console.log('Multisigned Transaction:', multisignedTx);
+
+        const submitResponse = await client.submit(multisignedTx);
+        console.log('response:', submitResponse);
+
+        if (submitResponse.result.engine_result === 'tesSUCCESS') {
+            res.status(200).send({
+                transactionResult: submitResponse.result.meta ? submitResponse.result.meta.TransactionResult : 'No TransactionResult',
+                signers: submitResponse.result.tx_json.Signers
+            });
+        } else {
+            res.status(500).send({
+                error: "The multisigned transaction was rejected by rippled",
+                submitResponse
+            });
+        }
+
+        await client.disconnect();
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while signing the multisig transaction');
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });

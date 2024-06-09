@@ -1,0 +1,26 @@
+[
+    {
+        "sendingAddress": "rGtqnorC826zAfXbyWd53GNtycF8pFVCWW",
+        "receivingAddress": "raF3An625yzS3EksmJSwJmmqVG1tZpL192",
+        "amount": "0.5 XRP",
+        "type": "Payment",
+        "signerApproval": [true, true, true],
+        "transactionHash": "C134610AFC59A56515D121487B88F3E2F6BDFE72785DB9BB0D542A537189143D"
+    },
+    {
+        "sendingAddress": "rGtqnorC826zAfXbyWd53GNtycF8pFVCWW",
+        "receivingAddress": "rpx6cVBLSmSFEFy1JNGGgDUTTgxKHnWUdT",
+        "amount": "1.2 XRP",
+        "type": "Payment",
+        "signerApproval": [true, true, true],
+        "transactionHash": "E20560EC42716704E99D1B78ED1D60E87488B75EC581EEEA0EC154011F682D16"
+    },
+    {
+        "sendingAddress": "rGtqnorC826zAfXbyWd53GNtycF8pFVCWW",
+        "receivingAddress": "rG8VcNg5RwVhf3PiqU2oYAtfJW34NTrCtm",
+        "amount": "41 XRP",
+        "type": "Payment",
+        "signerApproval": [true, true, false],
+        "transactionHash": "BBB476C0AFEAFD52E196B9F29343C1FCCE5289DE95BFCF34C0AA3F69AD81F4A6"
+    }
+]

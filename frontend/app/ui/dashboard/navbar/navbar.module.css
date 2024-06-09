@@ -1,0 +1,55 @@
+.container{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--bgSoft);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex;
+}
+
+.title{
+    color: white;
+    font-size: 1.5rem;
+    align-items: center;
+    font-weight: bold;
+    padding-top: 12px;
+    text-transform: capitalize;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 400px;
+    background-color: #00000089;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.searchIcon {
+    font-size: 20px; /* Adjust the size as needed */
+}
+
+.input{
+    background-color: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 16px;
+}
+
+.input:focus {
+    outline: none;
+    /* border-color: #555; Optional: change border color on focus */
+}
+
+.icons{
+    display: flex;
+    gap: 20px;
+}

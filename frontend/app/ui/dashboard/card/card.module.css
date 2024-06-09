@@ -1,0 +1,95 @@
+/* card.module.css */
+/* define colour variables */
+
+.container {
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+}
+
+.texts {
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    background: #222;
+    gap: 10px;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #eee;
+}
+
+.address {
+    display: inline-block;
+    font-size: 16px;
+    color: #FFF;
+    background-color: #141a1e;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: fit-content; /* Ensures the address box only takes up as much space as necessary */
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #141a1e;
+    color: #eee;
+    font-size: 15px;
+    flex: 1;
+}
+
+.input:focus {
+    outline: none;
+    /* border-color: #555; Optional: change border color on focus */
+}
+
