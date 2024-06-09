@@ -36,26 +36,14 @@
 }
 
 .cat {
-    color: var(--textSoft);
+    color: #BBB;
     font-weight: semi-bold;
     font-size: 18px;
     margin: 10px 0px;
 }
 
-.logout{
-    padding: 20px;
-    margin: 5px 0px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    border-radius: 10px;
-    background: none;
-    border: none;
-    color: white;
-    width: 100%;
-}
-
-.logout:hover{
-    background-color:#2e374a ;
+.divider {
+    height: 1px;
+    background-color: #53535d;
+    margin: 10px 0px;
 }

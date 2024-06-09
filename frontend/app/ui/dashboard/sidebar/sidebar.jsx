@@ -6,9 +6,6 @@ import { FaBook } from "react-icons/fa";
 import { MdOutlineSecurity } from "react-icons/md";
 import { RiTimer2Line } from "react-icons/ri";
 
-
-
-
 import {
     MdDashboard,
     MdSupervisedUserCircle,
@@ -20,12 +17,13 @@ import {
     MdOutlineSettings,
     MdHelpCenter,
     MdLogout,
-    FaBookOpen
+    FaBookOpen,
+    MdSettings
   } from "react-icons/md";
   
   const menuItems = [
     {
-      title: "Home",
+      title: "",
       list: [
         {
           title: "Dashboard",
@@ -39,29 +37,14 @@ import {
         },
         {
           title: "Fraud Detection",
-          path: "https://google.com",
+          path: "/dashboard/",
           icon: <MdOutlineSecurity />
           ,
-        }
-      ],
-    },
-    {
-      title: "Coming Soon",
-      list: [
-        {
-          title: "Fuzzing",
-          path: "/dashboard/revenue",
-          icon: <RiTimer2Line />,
         },
         {
-          title: "Formal Verification",
-          path: "/dashboard/reports",
-          icon: <RiTimer2Line />,
-        },
-        {
-          title: "Fraud Detection",
-          path: "/dashboard/teams",
-          icon: <RiTimer2Line />,
+          title: "Keypair Settings",
+          path: "",
+          icon: <MdSettings />,
         },
       ],
     },
@@ -77,6 +60,7 @@ const Sidebar = () => {
                     <span className={styles.usertitle}>Non-Custodial Keypairs</span>
                 </div>
             </div>
+            <div className={styles.divider}></div>
             <ul className={styles.list}>
             {menuItems.map((cat) => (
                 <li key={cat.title}>
@@ -87,10 +71,6 @@ const Sidebar = () => {
                 </li>
             ))}
             </ul>
-            <button className={styles.logout}>
-              <MdLogout/>
-              Logout
-            </button>
         </div>
     )
 }

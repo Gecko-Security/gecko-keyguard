@@ -70,7 +70,7 @@
     display: inline-block;
     font-size: 16px;
     color: #FFF;
-    background-color: #333;
+    background-color: #141a1e;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -81,7 +81,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background: #222;
+    background: #141a1e;
     color: #eee;
     font-size: 15px;
     flex: 1;

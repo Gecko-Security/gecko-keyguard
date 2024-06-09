@@ -7,6 +7,18 @@
     border-radius: 10px;
 }
 
-.container:hover, .active{
-    background-color: #313131;
+.container:hover{
+    background-color: #171720;
+    transition: 0.35s;
+}
+
+.container:active {
+    background-color: #0e0e14;
+    transition: 0.35s;
+}
+
+.icon {
+    font-size: 20px; /* Adjust the size as needed */
+    display: flex;
+    align-items: center;
 }
