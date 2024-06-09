@@ -38,8 +38,7 @@ import {
         {
           title: "Fraud Detection",
           path: "/dashboard/",
-          icon: <MdOutlineSecurity />
-          ,
+          icon: <MdOutlineSecurity />,
         },
         {
           title: "Keypair Settings",
@@ -54,7 +53,7 @@ const Sidebar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.user}>
-                <Image className={styles.userImage} src="/monke.png" alt="" width="110" height="110"/>
+                <Image className={styles.userImage} src="/monke.png" alt="" width="90" height="90"/>
                 <div className={styles.userDetail}>
                     <span className={styles.username}>DKMI</span>
                     <span className={styles.usertitle}>Non-Custodial Keypairs</span>
