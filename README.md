@@ -9,6 +9,10 @@ Developing decentralized applications on the XRP Ledger presents significant cha
 - **Transaction Signing**: Provides foundational features to sign XRPL transactions securely.
 - **NPL Round**: Facilitates sub-consensus rounds on the P2P network for signature distribution and collection.
 
+## Images
+<img width="1510" alt="Screenshot 2024-05-31 at 08 04 45" src="https://github.com/jjjutla/xrpl-dkmi/assets/22000925/8b0ba3ca-bcb1-430d-bc38-472b7037cf58">
+<img width="1510" alt="Screenshot 2024-05-31 at 08 04 45" src="https://github.com/jjjutla/xrpl-dkmi/assets/22000925/811146ed-7f13-4ceb-85f9-169899752252">
+
 ## How it Works 
 (example of generating an account and singing a transaction)
 - A network of decentralised nodes is generated (e.g. 5 nodes), each operating independently with its own private key.
