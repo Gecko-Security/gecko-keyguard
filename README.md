@@ -29,7 +29,6 @@ Demo: https://youtu.be/8y31W2issvc
 
 <img width="1510" alt="Screenshot 2024-05-31 at 08 04 45" src="https://github.com/jjjutla/xrpl-dkmi/assets/22000925/811146ed-7f13-4ceb-85f9-169899752252">
 <img width="1510" alt="Screenshot 2024-05-31 at 08 04 45" src="https://github.com/jjjutla/xrpl-dkmi/assets/22000925/30527ef2-cd7a-453e-833b-b192415889ed">
-<img width="1510" alt="Screenshot 2024-05-31 at 08 04 45" src="https://github.com/jjjutla/xrpl-dkmi/assets/22000925/8b0ba3ca-bcb1-430d-bc38-472b7037cf58">
 
 ## How it Works 
 (example of generating an account and singing a transaction)
@@ -45,6 +44,8 @@ Demo: https://youtu.be/8y31W2issvc
 - Each node verifies the collected signatures using the private keys, ensuring the signatures are valid and untampered.
 - The signatures are combined into a single multi-signature transaction. The [`combine`](https://xrpl.org/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction/#4.-combine-signatures-and-submit)function is used to create a transaction blob that includes all valid signatures
 - The combined multi-signature transaction is submitted to a ripple node for validation. The XRPL validates the transaction against the signer list and other rules before including it in the ledger.
+<img width="1510" alt="Architecture" src="https://github.com/user-attachments/assets/f7a27e04-01cd-49a5-a9df-c6db849b9d49">
+
 
 ## Technical
 The core technology includes a decentralised key management module developed in JavaScript using XRPL.js and simulated nodes developed in Java with XRPL4J to manage signer lists and handle transactions. KeyGuard starts by generating a network of decentralised nodes, each operating independently with its own private key. This setup ensures that no single point of failure exists, distributing trust and security across the network. A funded account can then generated using the XRPL faucet to serve as the dApp's XRPL account.
