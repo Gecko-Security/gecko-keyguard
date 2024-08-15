@@ -28,7 +28,7 @@ Developing decentralized applications on the XRP Ledger presents significant cha
 Demo: https://youtu.be/8y31W2issvc
 
 <img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/2a7f6fb8-a91b-4900-8c58-8e4509cd5825">
-<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/369f5007-b760-4078-8865-16ca51a3c8ba">
+<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/3a20b895-dc10-4346-95b1-37cb299282d8">
 
 
 ## How it Works 
