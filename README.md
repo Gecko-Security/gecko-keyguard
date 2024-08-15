@@ -27,8 +27,9 @@ Developing decentralized applications on the XRP Ledger presents significant cha
 ## Images
 Demo: https://youtu.be/8y31W2issvc
 
-<img width="1510" alt="Screenshot 2024-05-31 at 08 04 45" src="https://github.com/jjjutla/xrpl-dkmi/assets/22000925/811146ed-7f13-4ceb-85f9-169899752252">
-<img width="1510" alt="Screenshot 2024-05-31 at 08 04 45" src="https://github.com/jjjutla/xrpl-dkmi/assets/22000925/30527ef2-cd7a-453e-833b-b192415889ed">
+<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/2a7f6fb8-a91b-4900-8c58-8e4509cd5825">
+<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/369f5007-b760-4078-8865-16ca51a3c8ba">
+
 
 ## How it Works 
 (example of generating an account and singing a transaction)
