@@ -13,11 +13,8 @@
 
 ---
 
-### What is KeyGuard
-KeyGuard is the first decentralized key management (DKM) infrastructure built on the XRP Ledger. It enables dApps to efficiently and securely manage account signer keys in a decentralized manner.
-
-### Why
-Developing decentralized applications on the XRP Ledger presents significant challenges in managing signer keys for dApps' XRPL accounts. Each dApp requires decentralized ownership and management of its XRPL accounts to ensure security and trustlessness. However, the lack of infrastructure for decentralized key management on the XRPL forces developers to create their own frameworks. With $240 million lost to private key compromises due to centralization and single points of failure, this increases vulnerability to exploits, such as the GateHub attack, where $23 million XRP was lost due to centralized key management. To address this, we developed KeyGuard, the first decentralized key management infrastructure for XRPL, enabling dApps to efficiently and securely manage account signer keys in a decentralized manner. KeyGuard uses a network of decentralized nodes that operate independently with private keys, generating digital signatures for a shared transaction. These signatures are combined into a multi-signature transaction and submitted to the XRPL for validation against the signer list and ledger rules.
+### What is KeyGuard?
+KeyGuard is a decentralized key management infrastructure designed for dApps and users to securely manage account signer keys on the XRP Ledger. 
 
 ### Features
 - **Signer Key Management**: Allows dApps to manage their XRPL account signer keys in a decentralized manner.
@@ -32,7 +29,7 @@ Demo: [https://youtu.be/8y31W2issvc](https://youtu.be/8y31W2issvc)
 
 
 ## How it Works 
-(example of generating an account and singing a transaction)
+ (*KeyGuard is currently in alpha ans is not suitable for production*)
 - A network of decentralised nodes is generated (e.g. 5 nodes), each operating independently with its own private key.
 - A funded account is generated using the XRPL faucet, which will be used as the dApp's XRPL account.
 - `accountSet` transaction: The master key is disabled to ensure only the listed signer keys can authorize transactions.
