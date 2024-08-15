@@ -60,7 +60,7 @@ KeyGuard leverages XRPL.js for its core decentralized key management module and 
 
 ## How to Run
 
-##### Requirements
+#### Requirements
 - JDK 1.8 or higher
 - A Java project manager such as Maven or Gradle
 
