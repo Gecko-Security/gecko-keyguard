@@ -53,9 +53,9 @@ const Sidebar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.user}>
-                <Image className={styles.userImage} src="/monke.png" alt="" width="90" height="90"/>
+                <Image className={styles.userImage} src="/geckoo.png" alt="" width="60" height="60"/>
                 <div className={styles.userDetail}>
-                    <span className={styles.username}>DKMI</span>
+                    <span className={styles.username}>KeyGuard</span>
                     <span className={styles.usertitle}>Non-Custodial Keypairs</span>
                 </div>
             </div>
