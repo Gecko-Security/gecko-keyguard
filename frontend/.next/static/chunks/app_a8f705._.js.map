@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/app/nav-item.tsx"],"sourcesContent":["'use client';\n\nimport clsx from 'clsx';\nimport Link from 'next/link';\nimport { usePathname } from 'next/navigation';\n\nexport function NavItem({\n  href,\n  children\n}: {\n  href: string;\n  children: React.ReactNode;\n}) {\n  const pathname = usePathname();\n\n  return (\n    <Link\n      href={href}\n      className={clsx(\n        'flex items-center gap-3 rounded-lg  px-3 py-2 text-gray-900  transition-all hover:text-gray-900  dark:text-gray-50 dark:hover:text-gray-50',\n        {\n          'bg-gray-100 dark:bg-gray-800': pathname === href\n        }\n      )}\n    >\n      {children}\n    </Link>\n  );\n}\n"],"names":[],"mappings":";;;;;;;;;;AAAA;;;;AAMO,SAAS,QAAQ,EACtB,IAAI,EACJ,QAAQ,EAIT;;IACC,MAAM,WAAW,CAAA,GAAA,qIAAA,CAAA,cAAW,AAAD;IAE3B,qBACE,6LAAC,+HAAA,CAAA,UAAI;QACH,MAAM;QACN,WAAW,CAAA,GAAA,wIAAA,CAAA,UAAI,AAAD,EACZ,8IACA;YACE,gCAAgC,aAAa;QAC/C;kBAGD;;;;;;AAGP;GAtBgB;;QAOG,qIAAA,CAAA,cAAW;;;KAPd"}},
-    {"offset": {"line": 42, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
