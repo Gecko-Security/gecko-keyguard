@@ -25,10 +25,10 @@ Developing decentralized applications on the XRP Ledger presents significant cha
 - **NPL Round**: Facilitates sub-consensus rounds on the P2P network for signature distribution and collection.
 
 ## Images
-Demo: https://youtu.be/8y31W2issvc
+Demo: [https://youtu.be/8y31W2issvc](https://youtu.be/8y31W2issvc)
 
-<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/2a7f6fb8-a91b-4900-8c58-8e4509cd5825">
-<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/3a20b895-dc10-4346-95b1-37cb299282d8">
+<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/1a4c49be-a61a-40f6-995a-a8c87b5e6a22">
+<img width="1510" style="border-radius: 50px;" src="https://github.com/user-attachments/assets/2ad1cf56-6043-443d-b0a2-1bd71ecada70">
 
 
 ## How it Works 
