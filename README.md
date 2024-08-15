@@ -14,7 +14,7 @@
 ---
 
 ### What is KeyGuard?
-KeyGuard is a decentralized key management infrastructure designed for dApps and users to securely manage account signer keys on the XRP Ledger. 
+KeyGuard is a decentralized key management infrastructure designed for dApps and users to securely manage account signer keys on the XRP Ledger.
 
 ### Features
 - **Signer Key Management**: Allows dApps to manage their XRPL account signer keys in a secure decentralized way.
@@ -55,7 +55,18 @@ KeyGuard is a decentralized key management infrastructure designed for dApps and
     - The combined multi-signature transaction is submitted to a Ripple node for validation.
     - The XRPL validates the transaction against the signer list and other rules before including it in the ledger.
 
-KeyGuard leverages XRPL.js for its core decentralized key management module and uses Java with XRPL4J for simulated nodes to manage signer lists and handle transactions. To try KeyGuard locally run the simulated Java nodes using Gradle or build using Docker and simply create a boostrap config file  with the XRPL.js api and node settings and list the transactions to run.
+KeyGuard leverages XRPL.js for its core decentralized key management module and uses Java with XRPL4J for simulated nodes to manage signer lists and handle transactions. 
+
+## How to Run
+To run the frontend, enter the `frontend` folder and install all necessary `node.js` dependencies
+
+        npm i
+
+and then run the MVP of KeyGuard locally using
+
+        npm run dev
+
+which will create an endpoint at `localhost:3000`, please proceed to `localhost:3000/dashboard` to interact with the MVP. To locally run the simulated Java nodes using Gradle or build using Docker and simply create a boostrap config file with the XRPL.js API and the relevant node settings and list the transactions to run.
 
 Demo: [https://youtu.be/8y31W2issvc](https://youtu.be/8y31W2issvc)
 
