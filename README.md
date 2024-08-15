@@ -58,11 +58,11 @@ Each node constructs the same transaction details, such as sender, destination, 
 Valid signatures are then combined into a single multi-signature transaction using the `combine` function, creating a transaction blob that includes all signatures. This multi-signature transaction is submitted to a ripple node for validation. The XRP Ledger validates the transaction against the signer list and other rules before including it in the ledger, ensuring the integrity and security of the transaction process.
 
 ### Roadmap
-ALPHA VERSION
+Alpha Prototype
 - [x] Working MVP Prototype
 
 
-BETA VERSION
+Beta Version
 - [ ] Developing the core DKMI using XRPL.js
 - [ ] Production nodes using XRPL4J
 - [ ] Imeplementation of decentralized signer key management and transaction signing
@@ -71,7 +71,7 @@ BETA VERSION
 - [ ] Developer APIs
 
 
-PRODUCTION RELEASE
+Production Release
 - [ ] Node SDK
 - [ ] Security and Scalability Testing
 - [ ] Documentation
