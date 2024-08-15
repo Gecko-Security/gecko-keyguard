@@ -11,17 +11,15 @@
 </p>
 
 
+---
 
-
-
-
-# KeyGuard
+### What is KeyGuard
 KeyGuard is the first decentralized key management (DKM) infrastructure built on the XRP Ledger. It enables dApps to efficiently and securely manage account signer keys in a decentralized manner.
 
-## Why
+### Why
 Developing decentralized applications on the XRP Ledger presents significant challenges in managing signer keys for dApps' XRPL accounts. Each dApp requires decentralized ownership and management of its XRPL accounts to ensure security and trustlessness. However, the lack of infrastructure for decentralized key management on the XRPL forces developers to create their own frameworks. With $240 million lost to private key compromises due to centralization and single points of failure, this increases vulnerability to exploits, such as the GateHub attack, where $23 million XRP was lost due to centralized key management. To address this, we developed KeyGuard, the first decentralized key management infrastructure for XRPL, enabling dApps to efficiently and securely manage account signer keys in a decentralized manner. KeyGuard uses a network of decentralized nodes that operate independently with private keys, generating digital signatures for a shared transaction. These signatures are combined into a multi-signature transaction and submitted to the XRPL for validation against the signer list and ledger rules.
 
-## Key Features
+### Features
 - **Signer Key Management**: Allows dApps to manage their XRPL account signer keys in a decentralized manner.
 - **Transaction Signing**: Provides foundational features to sign XRPL transactions securely.
 - **NPL Round**: Facilitates sub-consensus rounds on the P2P network for signature distribution and collection.
@@ -57,10 +55,11 @@ Each node constructs the same transaction details, such as sender, destination, 
 
 Valid signatures are then combined into a single multi-signature transaction using the `combine` function, creating a transaction blob that includes all signatures. This multi-signature transaction is submitted to a ripple node for validation. The XRP Ledger validates the transaction against the signer list and other rules before including it in the ledger, ensuring the integrity and security of the transaction process.
 
-## Contributing
+### Roadmap
 
-KeyGuard is open-source and a community effort. Contributions are welcome to improve and expand the framework.
+- [x] MVP Prototype
 
-## License
+
+### License
 
 KeyGuard is released under the MIT License.
