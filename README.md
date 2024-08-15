@@ -62,5 +62,3 @@ Valid signatures are then combined into a single multi-signature transaction usi
 
 ### License
 KeyGuard is an open-source software licensed under the [MIT License](https://github.com/Gecko-Security/gecko-keyguard/blob/main/MIT_LICENSE.txt)
-
-KeyGuard is released under the MIT License.
