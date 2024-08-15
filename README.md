@@ -1,3 +1,20 @@
+
+<p align="center">
+<br />
+    <img src="https://github.com/user-attachments/assets/bb4f9421-7c22-4273-9404-8171a10f11bf" width="400" alt=""/>
+<br />
+</p>
+<p align="center"><strong style="font-size: 24px;">Decentralized Key Management Infrastructure for XRPL</strong></p>
+<p align="center" style="display: flex; justify-content: center; align-items: center;">
+    <span style="display: inline-flex; align-items: center; background-color: #1c1c1c; padding: 5px; border-radius: 6px;">
+    </span>
+</p>
+
+
+
+
+
+
 # KeyGuard
 KeyGuard is the first decentralized key management (DKM) infrastructure built on the XRP Ledger. It enables dApps to efficiently and securely manage account signer keys in a decentralized manner.
 
