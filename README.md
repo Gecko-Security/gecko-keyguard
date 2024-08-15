@@ -18,7 +18,7 @@ KeyGuard is a decentralized key management infrastructure designed for dApps and
 
 
 ### Features
-- **Signer Key Management**: Allows dApps to manage their XRPL account signer keys in a secure decentralized way.
+- **Signer Key Management**: Allows dApps to manage their account signer keys in a secure decentralized way.
 - **Transaction Signing**: Provides foundational features to sign XRPL transactions securely.
 - **NPL Round**: Facilitates sub-consensus rounds on the P2P network for signature distribution and collection.
 
