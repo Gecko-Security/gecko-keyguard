@@ -13,11 +13,11 @@
 
 ---
 
-### What is KeyGuard?
+## What is KeyGuard?
 KeyGuard is a decentralized key management infrastructure designed for dApps and users to securely manage account signer keys on the XRP Ledger. This addresses the vulnerabilities associated with centralized key management systems, which have historically led to significant financial losses.
 
 
-### Features
+## Features
 - **Signer Key Management**: Allows dApps to manage their account signer keys in a secure decentralized way.
 - **Transaction Signing**: Provides foundational features to sign XRPL transactions securely.
 - **NPL Round**: Facilitates sub-consensus rounds on the P2P network for signature distribution and collection.
@@ -59,6 +59,12 @@ KeyGuard is a decentralized key management infrastructure designed for dApps and
 KeyGuard leverages XRPL.js for its core decentralized key management module and uses Java with XRPL4J for simulated nodes to manage signer lists and handle transactions. 
 
 ## How to Run
+
+##### Requirements
+- JDK 1.8 or higher
+- A Java project manager such as Maven or Gradle
+
+
 To run the frontend, enter the `frontend` folder and install all necessary `node.js` dependencies
 
     npm i
@@ -67,9 +73,16 @@ and then run the MVP of KeyGuard locally using
 
     npm run dev
 
-which will create an endpoint at `localhost:3000`, please proceed to `localhost:3000/dashboard` to interact with the MVP. To locally run the simulated Java nodes using Gradle or build using Docker and simply create a boostrap config file with the XRPL.js API and the relevant node settings and list the transactions to run.
+which will create an endpoint at `localhost:3000`, please proceed to `localhost:3000/dashboard` to interact with the MVP. 
 
-Demo: [https://youtu.be/8y31W2issvc](https://youtu.be/8y31W2issvc)
+To locally run the simulated Java nodes using Gradle or build using Docker and simply create a boostrap config file with the XRPL.js API and the relevant node settings and list the transactions to run.
+
+
+    mvn clean install
+
+
+
+Demo: [https://www.youtube.com/watch?v=ZjeqdT0yWF8](https://www.youtube.com/watch?v=ZjeqdT0yWF8)
 
 
 ### Roadmap
