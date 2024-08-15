@@ -59,7 +59,19 @@ Valid signatures are then combined into a single multi-signature transaction usi
 
 ### Roadmap
 
-- [x] MVP Prototype
+- [x] Working MVP Prototype
+ALPHA VERSION
+- [ ] Developing the core DKMI using XRPL.js
+- [ ] Production nodes using XRPL4J
+- [ ] Imeplementation of decentralized signer key management and transaction signing
+- [ ] Completed sub-consensus rounds (NPL) for signature distribution for the nodes.
+- [ ] JS SDK for developers
+- [ ] Developer APIs
+BETA VERSION
+- [ ] Node SDK
+- [ ] Security and Scalability Testing
+- [ ] Documentation
+PRODUCTION RELEASE
 
 
 ### License
