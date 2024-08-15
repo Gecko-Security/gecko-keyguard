@@ -60,11 +60,11 @@ KeyGuard leverages XRPL.js for its core decentralized key management module and 
 ## How to Run
 To run the frontend, enter the `frontend` folder and install all necessary `node.js` dependencies
 
-        npm i
+    npm i
 
 and then run the MVP of KeyGuard locally using
 
-        npm run dev
+    npm run dev
 
 which will create an endpoint at `localhost:3000`, please proceed to `localhost:3000/dashboard` to interact with the MVP. To locally run the simulated Java nodes using Gradle or build using Docker and simply create a boostrap config file with the XRPL.js API and the relevant node settings and list the transactions to run.
 
