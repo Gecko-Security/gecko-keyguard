@@ -14,7 +14,8 @@
 ---
 
 ### What is KeyGuard?
-KeyGuard is a decentralized key management infrastructure designed for dApps and users to securely manage account signer keys on the XRP Ledger.
+KeyGuard is a decentralized key management infrastructure designed for dApps and users to securely manage account signer keys on the XRP Ledger. This addresses the vulnerabilities associated with centralized key management systems, which have historically led to significant financial losses.
+
 
 ### Features
 - **Signer Key Management**: Allows dApps to manage their XRPL account signer keys in a secure decentralized way.
