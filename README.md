@@ -35,7 +35,8 @@ KeyGuard is a decentralized key management infrastructure designed for dApps and
 
 
 <img width="1510" alt="Architecture" src="https://github.com/user-attachments/assets/f7a27e04-01cd-49a5-a9df-c6db849b9d49">
- 
+<br><br>
+
 1. **Nodes**: KeyGuard generates a network of decentralized nodes, each operating independently with its own private key. 
 2. **Account Creation**: An XRPL account is created and funded using the XRPL faucet. This account serves as the dApp's primary XRPL account.
 3. **Security Configuration**:
