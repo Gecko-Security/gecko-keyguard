@@ -58,8 +58,6 @@ Demo: [https://youtu.be/8y31W2issvc](https://youtu.be/8y31W2issvc)
 <img width="1510" alt="Architecture" src="https://github.com/user-attachments/assets/f7a27e04-01cd-49a5-a9df-c6db849b9d49">
 
 
-
-
 ### Roadmap
 Alpha Prototype
 - [x] Working MVP Prototype
