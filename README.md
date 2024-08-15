@@ -30,6 +30,11 @@ KeyGuard is a decentralized key management infrastructure designed for dApps and
 
 ## How it Works 
  (*KeyGuard is currently in alpha and is not suitable for production*)
+
+
+
+<img width="1510" alt="Architecture" src="https://github.com/user-attachments/assets/f7a27e04-01cd-49a5-a9df-c6db849b9d49">
+ 
 1. **Nodes**: KeyGuard generates a network of decentralized nodes, each operating independently with its own private key. 
 2. **Account Creation**: An XRPL account is created and funded using the XRPL faucet. This account serves as the dApp's primary XRPL account.
 3. **Security Configuration**:
@@ -55,24 +60,14 @@ KeyGuard leverages XRPL.js for its core decentralized key management module and 
 Demo: [https://youtu.be/8y31W2issvc](https://youtu.be/8y31W2issvc)
 
 
-<img width="1510" alt="Architecture" src="https://github.com/user-attachments/assets/f7a27e04-01cd-49a5-a9df-c6db849b9d49">
-
-
 ### Roadmap
-Alpha Prototype
 - [x] Working MVP Prototype
-
-
-Beta Version
 - [ ] Developing the core DKMI using XRPL.js
 - [ ] Production nodes using XRPL4J
 - [ ] Imeplementation of decentralized signer key management and transaction signing
 - [ ] Completed sub-consensus rounds (NPL) for signature distribution for the nodes.
 - [ ] JS SDK for developers
 - [ ] Developer APIs
-
-
-Production Release
 - [ ] Node SDK
 - [ ] Security and Scalability Testing
 - [ ] Documentation
