@@ -1,7 +1,7 @@
 
 <p align="center">
 <br />
-    <img src="https://github.com/user-attachments/assets/bb4f9421-7c22-4273-9404-8171a10f11bf" width="400" alt=""/>
+    <img src="https://github.com/user-attachments/assets/bb4f9421-7c22-4273-9404-8171a10f11bf" width="500" alt=""/>
 <br />
 </p>
 <p align="center"><strong style="font-size: 24px;">Decentralized Key Management Infrastructure for XRPL</strong></p>
